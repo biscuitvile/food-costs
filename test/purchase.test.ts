@@ -16,8 +16,7 @@ describe("Purchase", () => {
   describe("#amount", () => {
     it("sets and gets an amount", () => {
       const purchase = new Purchase({ amount: amount });
-      expect(purchase.amount.quantity).toEqual(42);
-      expect(purchase.amount.unit).toEqual("oz");
+      expect(purchase.amount).toEqual(amount);
     });
   });
 
