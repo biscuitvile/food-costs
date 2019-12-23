@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "clean": "rm **/*.js"
   },
   "devDependencies": {
     "@types/jest": "^24.0.24",
