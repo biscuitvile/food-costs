@@ -1,4 +1,4 @@
-import FoodCosts from './food-costs'
+import FoodCosts from '../src/food-costs'
 
 describe('FoodCosts', () => {
 
