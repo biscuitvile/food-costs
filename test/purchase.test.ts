@@ -116,4 +116,34 @@ describe("Purchase", () => {
       expect(Purchase.find(2)).toEqual(anotherPurchase);
     });
   });
+
+  describe("#destroy()", () => {
+    it("removes a purchase from the store", () => {
+      purchase.save()
+      expect(Store.purchases.length).toEqual(1);
+
+      purchase.destroy()
+      expect(Store.purchases.length).toEqual(0);
+    });
+
+    it("leaves other objects alone while deleting", () => {
+      purchase.save();
+      expect(Store.purchases[0]).toEqual(purchase);
+
+      const anotherPurchase = new Purchase().save();
+      expect(Store.purchases[1]).toEqual(anotherPurchase);
+
+      expect(Store.purchases.length).toEqual(2);
+
+      expect(purchase.destroy()).toEqual(true);
+      expect(Store.purchases).toEqual([anotherPurchase]);
+    });
+
+    it("handles records not found", () => {
+      let purchase = new Purchase();
+
+      expect(Store.purchases.length).toEqual(0);
+      expect(purchase.destroy()).toEqual(false);
+    });
+  });
 });

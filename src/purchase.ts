@@ -43,10 +43,22 @@ class Purchase {
     return this;
   }
 
+  destroy(): boolean {
+    const record = Purchase.find(this.id);
+
+    if (record) {
+      const index = Store.purchases.indexOf(record);
+      Store.purchases = Store.purchases.splice(index + 1, 1);
+
+      return true
+    }
+
+    return false;
+  }
+
   public static find(id: number | undefined): Purchase | undefined {
     return Store.purchases.find(record => record.id == id);
   }
-
 }
 
 export default Purchase
